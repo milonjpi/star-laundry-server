@@ -115,6 +115,15 @@ app.delete('/deleteService/:id', (req, res) => {
   })
 })
 
+app.patch('/updateStatus/:id', (req, res) => {
+  const id = ObjectId(req.params.id);
+  ordersCollection.updateOne({_id: id},
+    {
+      $set: {orderStatus: req.body.newStatus}
+    }
+    )
+})
+
   //   client.close();
 });
 
